@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive-navigation-bar</title>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url(anime.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            min-height: 200vh;
+
+        }
+
+        .parent {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(68, 45, 29, 0.3);
+             backdrop-filter: blur(10px);
+            color: #fceccf;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .logo h2 {
+            font-family: poppins, sans-serif;
+            font-size: 30px;
+            font-weight: 500;
+            transition: .5s ease;   
+        }
+
+        .logo h2:hover {
+            letter-spacing: 5px;
+        }
+
+        .navbarlink a {
+            text-decoration: none;
+            color: #FFF8E7;
+            margin-left: 20px;
+            font-size: 20px;   
+            transition: .5s ease;
+        }
+        .navbarlink a:hover {
+         border-bottom: 3px solid #fceccf;
+         text-underline-offset: 6px;
+        }
+        .navbarlink a.active {
+            border-bottom: 3px solid #fceccf;
+        }
+
+        .navbarlink .btn {
+            width: 80px;
+            height: 40px;
+            background: transparent;
+            color: #FFF8E7;
+            border: 1px solid;
+            margin-left: 10px;
+            border-radius: 5px;
+            transition: .5s ease;
+
+        }
+        .navbarlink .btn:hover {
+            background: #FFF8E7;
+            color: #4E342E;
+            transform: scale(1.2);
+        }
+        .menu-bar {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: none;
+            transition: .5s ease;
+        } 
+        .menu-bar:hover {
+            background: #4A4A4A;
+
+        }
+        @media (max-width: 589px) {
+            .menu-bar {
+                display: block;
+            }
+            .navbarlink {
+                display: none;
+            }
+        }
+
+         .menu-bar img {
+            width: 24px;
+            height: 24px;
+         }
+
+         .close-bar {
+    transform: scale(0.8);
+    align-self: flex-start;
+
+
+            background: none;
+            position: absolute;
+        
+            top: 23px;
+            right: 200px;
+
+         
+            border: none;
+            z-index: 9999;
+            cursor: pointer;
+            transition: .5s ease;
+         }
+         .close-bar.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+         }
+
+        .close-bar:hover {
+            background: #4A4A4A;
+            
+        }
+
+        
+         .close-bar img {
+            width: 30px;
+            height: 30px;
+         }
+
+         .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    font-weight: 1000px;
+    height:70vh;
+
+     background-color: rgba(0, 0, 0, 0.15);
+     backdrop-filter: blur(16px);
+     -webkit-backdrop-filter: blur(23px);
+     border-left: 1px solid rgba(255,255,255,0.15);
+
+     display: flex;
+     flex-direction: column;
+     padding-top: 80px;
+     gap: 16px;
+
+     transition: .5s ease;
+}
+
+.mobile-menu a {
+    text-decoration: none;
+            color: #FFF8E7;
+            background: transparent;
+            margin-left: 20px;
+            font-size: 22px;   
+            transition: .5s;
+        }
+        .mobile-menu a:hover {
+         text-decoration: underline;
+         width: fit-content;
+         text-underline-offset: 7px;
+         text-decoration-thickness: 3px;
+         
+         
+
+        }
+        .mobile-menu {
+            right: -100%;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+
+
+    </style>
+</head>
+<body>
+   <nav class="parent">
+    <div class="logo">
+            <h2>Logo</h2>
+    </div>
+    <div class="navbarlink">
+        <a href="Navigation.html">Home</a>
+        <a href="#" class="active">About me</a>
+        <a href="Product.html">Product</a>
+        <a href="Contact.html">Contact</a>
+        <button class="btn">Sign in</button>
+    </div>
+    <div class="mobile-menu" id="mobmenu">
+        <button class="close-bar" id="closebtn">
+        <img src="close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" alt="close button">
+    </button>
+        <a href="Navigation.html">Home </a>
+        <a href="#" class="active">About me</a>
+        <a href="Product.html">Product </a>
+        <a href="Contact.html">Contact </a>
+    </div>
+    <button class="menu-bar" id="menubtn">
+        <img src="menu_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" alt="menu button">
+    </button>
+   </nav> 
+
+
+
+
+
+   <script>
+    const menubtn = document.getElementById("menubtn");
+const closebtn = document.getElementById("closebtn");
+const mobmenu = document.getElementById("mobmenu");
+
+menubtn.addEventListener("click", () => {
+    mobmenu.classList.add("active");
+    menubtn.style.display = "none";
+});
+
+closebtn.addEventListener("click", () => {
+    mobmenu.classList.remove("active");
+    menubtn.style.display = "block";
+});
+   </script>
+   
+</body>
+</html>
